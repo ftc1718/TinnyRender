@@ -21,7 +21,13 @@ struct TGA_Header {
 #pragma pack(pop)
 
 struct TGAColor {
-	unsigned char bgra[4];
+	union {
+		struct 
+		{
+			unsigned char b, g, r, a;
+		};
+		unsigned char bgra[4];
+	};
 	unsigned char bytespp;
 
 	TGAColor() : bgra(), bytespp(1) {
